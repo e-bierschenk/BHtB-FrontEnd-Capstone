@@ -1,0 +1,13 @@
+img {
+    width: 100%;
+}
+
+picture {
+    width: 100px;
+}
+
+.card {
+    /* margin: 1em; */
+    flex: 1 0 20%;
+    border: 1px red dashed;
+}
