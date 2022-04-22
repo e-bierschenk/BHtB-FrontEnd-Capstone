@@ -1,0 +1,4 @@
+export const imdbApi = {
+    key: "MyKey",
+    url: "https://imdb-api.com/API"
+}

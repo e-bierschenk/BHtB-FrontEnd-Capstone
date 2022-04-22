@@ -1,8 +1,8 @@
-import { apiKey } from "./api-key.js" 
+import { imdbApi } from "./settings.js" 
 
 
 export const getCastByMovieId = movieId => {
-    return fetch (`https://imdb-api.com/API/FullCast/${apiKey}/${movieId}`)
+    return fetch (`${imdbApi.url}/FullCast/${imdbApi.key}/${movieId}`)
         .then(response => response.json())
         .then(res => {
             console.log(res)
@@ -10,7 +10,7 @@ export const getCastByMovieId = movieId => {
 }
 
 export const getMoviesByActorId = actorId => {
-    return fetch (`https://imdb-api.com/API/Name/${apiKey}/${actorId}`)
+    return fetch (`${imdbApi.url}/Name/${imdbApi.key}/${actorId}`)
         .then(response => response.json())
         .then(res => {
             console.log(res)
