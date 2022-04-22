@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
-import { CardList } from './components/actors/CardList'
+import { BHtB } from './components/BHtB';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -12,7 +12,7 @@ const root = createRoot(container);
 root.render(
   <StrictMode>
     <Router>
-      <CardList />
+      <BHtB />
     </Router>
   </StrictMode>
 );

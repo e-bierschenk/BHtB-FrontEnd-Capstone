@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 #api-keys
-/src/modules/api-key.js
+/src/modules/settings.js
 /api/database.json
 
 .eslintcache

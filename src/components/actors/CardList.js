@@ -1,38 +1,40 @@
 import React, { useState, useEffect } from 'react';
-//import the components we will need
 import { ActorCard } from './ActorCard';
 import { MovieCard } from './MovieCard';
-import { getCastByMovieId, getMoviesByActorId } from '../../modules/imdb-api';
+import { getCastByMovieId, getMoviesByActorId } from '../../modules/IMDB-API';
 
 
 
 export const CardList = () => {
-    // The initial state is an empty array
     const [actor, setActor] = useState({});
     const [movie, setMovie] = useState({})
-    const [actorMovie, setActorMovie] = useState("actor")
-
+    const [actorMovie, setActorMovie] = useState("actor") //this state toggles back and forth between actor and movie
+    const [linkCount, setLinkCount] = useState(0)
+    //these are used for testing, remove later
     let startmovieId = "tt0110413"
     let startactorId = "nm0000204"
 
-    const getMovie = (movieId) => {
-        // After the data comes back from the API, we
-        // use the setActors function to update state
-        return getCastByMovieId(movieId).then(setMovie);
-    };
+    const getMovie = (movieId) => getCastByMovieId(movieId).then(setMovie)
+    const getActor = (actorId) => getMoviesByActorId(actorId).then(setActor)
 
-    const getActor = (actorId) => {
-        return getMoviesByActorId(actorId).then(setActor)
-    }
 
     const handleClick = (event) => {
         console.log("clicked ", event.currentTarget.id)
+        //check whether we are on an actor or movie step
         if (actorMovie === "actor") {
             getMovie(event.currentTarget.id)
                 .then(() => setActorMovie("movie"))
         } else {
-            getActor(event.currentTarget.id)
-                .then(() => setActorMovie("actor"))
+            const newCount = linkCount + 1
+            setLinkCount(newCount)
+            //check to see if the clicked actor is kevin bacon otherwise, keep looping through movie/actor steps
+            if (event.currentTarget.id === "nm0000102") {
+                //trigger end of game steps
+                console.log("CONGRATS YOU LED KEVIN BACON HOME")
+            } else {
+                getActor(event.currentTarget.id)
+                    .then(() => setActorMovie("actor"))
+            }
         }
     }
 
@@ -46,6 +48,7 @@ export const CardList = () => {
         return (
             <>
                 <h2>Actors in {movie.title}</h2>
+                <h3>Links used: {linkCount}</h3>
                 <div className="container-cards">
                     {movie.actors?.map(actor =>
                         <ActorCard
@@ -60,9 +63,10 @@ export const CardList = () => {
         return (
             <>
                 <h2>Movies Starring {actor.name}</h2>
+                <h3>Links used: {linkCount}</h3>
                 <div className="container-cards">
                     {actor.castMovies?.map(movie =>
-                        (movie.role === "Actress" || movie.role === "Actor") && movie.year !== ""?
+                        (movie.role === "Actress" || movie.role === "Actor") && movie.year !== "" ?
                             <MovieCard
                                 handleClick={handleClick}
                                 key={movie.id}
