@@ -2,7 +2,7 @@ import React, { useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
 
-export const Register = ({setAuthUser}) => {
+export const Register = ({ setAuthUser }) => {
     const firstName = useRef()
     const lastName = useRef()
     const email = useRef()
@@ -11,7 +11,7 @@ export const Register = ({setAuthUser}) => {
 
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/customers?email=${email.current.value}`)
+        return fetch(`http://localhost:8088/users?email=${email.current.value}`)
             .then(res => res.json())
             .then(user => !!user.length)
     }
@@ -19,11 +19,10 @@ export const Register = ({setAuthUser}) => {
     const handleRegister = (e) => {
         e.preventDefault()
 
-
         existingUserCheck()
             .then((userExists) => {
                 if (!userExists) {
-                    fetch("http://localhost:8088/customers", {
+                    fetch("http://localhost:8088/users", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -36,7 +35,7 @@ export const Register = ({setAuthUser}) => {
                         .then(res => res.json())
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
-                                //setAuthUser(createdUser)
+                                setAuthUser(createdUser)
                                 navigate("/")
                             }
                         })

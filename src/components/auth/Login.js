@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { useNavigate} from "react-router-dom"
 import "./Login.css"
 
-export const Login = ({setAuthUser}) => {
+export const Login = ({ setAuthUser }) => {
     const email = useRef()
     const existDialog = useRef()
     const navigate = useNavigate()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/customers?email=${email.current.value}`)
+        return fetch(`http://localhost:8088/users?email=${email.current.value}`)
             .then(res => res.json())
             .then(user => user.length ? user[0] : false)
     }

@@ -1,4 +1,4 @@
-import { imdbApi } from "./settings.js" 
+import { imdbApi } from "./Settings.js" 
 
 
 export const getCastByMovieId = movieId => {
