@@ -1,7 +1,7 @@
 import { Routes, Route, Outlet, Navigate } from "react-router-dom"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
-import { CardList } from "./actors/CardList"
+import { Game } from "./game/Game"
 
 export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
     const PrivateOutlet = () => {
@@ -12,7 +12,7 @@ export const ApplicationViews = ({ isAuthenticated, setAuthUser }) => {
         <>
             <Routes>
                 <Route path="/" element={<PrivateOutlet />} >
-                    <Route path="/" element={<CardList />} />
+                    <Route path="/" element={<Game />} />
                 </Route>
 
                 <Route path="/login" element={<Login setAuthUser={setAuthUser} />} />
