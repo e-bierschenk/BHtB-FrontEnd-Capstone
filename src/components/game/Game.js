@@ -26,7 +26,11 @@ export const Game = () => {
     //these are used for testing, remove later
     // const startmovieId = "tt0110413"
     // const startactorId = "nm0000492" //Jennifer Jason Leigh
-    const startactorId = "nm0000204" //natalie portman
+    // const startactorId = "nm0000204" //natalie portman
+    // const startactorId = "nm0000114" //steve buscemi
+    // const startactorId = "nm0005188" //james marsden
+    const startactorId = "nm0000368" //laura dern
+
 
     //functions to get a movie's actors or an actor's movies, and set state
     const getMovie = (movieId) => getCastByMovieId(movieId).then(setMovie)
@@ -58,7 +62,7 @@ export const Game = () => {
                     userId: JSON.parse(sessionStorage.getItem("bacon_user")).id,
                     isWin: true,
                     score: linkCount + 1,
-                    timeElasped: new Date() - startTime,
+                    timeElapsed: new Date() - startTime,
                     breadcrumb: trailToDbFormat(trail)
                 }
                 addGame(gameObj)

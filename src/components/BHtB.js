@@ -1,7 +1,5 @@
 import { useState } from "react"
 import { ApplicationViews } from "./ApplicationViews"
-import { Navbar } from "../nav/Navbar"
-
 
 export const BHtB = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("bacon_user") !== null)
@@ -19,10 +17,10 @@ export const BHtB = () => {
 
     return (
         <>
-            <Navbar clearUser={clearUser} />
             <ApplicationViews 
                 setAuthUser={setAuthUser}
-                isAuthenticated={isAuthenticated}/>
+                isAuthenticated={isAuthenticated}
+                clearUser={clearUser} />
         </>
     )
 }
