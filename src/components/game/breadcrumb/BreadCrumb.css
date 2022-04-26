@@ -1,0 +1,8 @@
+.breadcrumb {
+    display: flex;
+    flex-direction: row;
+}
+
+.crumb {
+    text-decoration: underline;
+}

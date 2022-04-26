@@ -4,16 +4,16 @@ import { Navbar } from "../nav/Navbar"
 
 
 export const BHtB = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("nutshell_user") !== null)
+    const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("bacon_user") !== null)
 
     const setAuthUser = (user) => {
-        sessionStorage.setItem("nutshell_user", JSON.stringify(user))
-        setIsAuthenticated(sessionStorage.getItem("nutshell_user") !== null)
+        sessionStorage.setItem("bacon_user", JSON.stringify(user))
+        setIsAuthenticated(sessionStorage.getItem("bacon_user") !== null)
     }
 
     const clearUser = () => {
         sessionStorage.clear();
-        setIsAuthenticated(sessionStorage.getItem("nutshell_user") !== null)
+        setIsAuthenticated(sessionStorage.getItem("bacon_user") !== null)
     }
 
 
