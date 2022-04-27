@@ -11,3 +11,8 @@ export const addGame = gameObj => {
     }).then(response => response.json())
 
 }
+
+export const getGamesByUserId = userId => {
+    return fetch(`${baconApi.url}/games?userId=${userId}&_sort=id&_order=desc`)
+        .then(res => res.json())
+}
