@@ -54,12 +54,21 @@ hr {
     text-align: center;
 }
 
-button {
-    margin-top: 125px;
-    margin-left: 150px;
+.btn {
     font-weight: 600;
-    color: var(--main-color);
-    background-color: #FFFFFF;
     border: none;
     padding: 1em;
+    transition: opacity 0.25s;
+}
+
+.btn:hover {
+    opacity: 75%;
+}
+
+.start-btn {
+    margin-top: 125px;
+    margin-left: 150px;
+    color: var(--main-color);
+    background-color: #FFFFFF;
+    opacity: 95%;
 }

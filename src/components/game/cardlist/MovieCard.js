@@ -3,17 +3,19 @@ import React from "react";
 
 
 
-export const MovieCard = ({ movie, handleClick }) => {
+export const MovieCard = ({ movie, handleClick, handleDetailClick }) => {
     return (
         <>
-            <div className="movie-card" id={movie.id} onClick={(event) => handleClick(event)}>
-                    <h2><span className="movie-name">
+            <div className="movie-card">
+                <h2 className="movie-name"
+                    onClick={(event) => handleClick(event)} id={movie.id}><span>
                         {movie.title}
-                        </span></h2>
-                    <div className="details-div">
-                        <img src="/images/magnifying_glass.png" alt="magnifying glass"
+                    </span></h2>
+                <div className="details-div" 
+                    onClick={() => handleDetailClick(movie)}>
+                    <img src="/images/magnifying_glass.png" alt="magnifying glass"
                         className="mag-icon" />
-                    </div>
+                </div>
             </div>
         </>
     )

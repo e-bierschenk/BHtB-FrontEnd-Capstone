@@ -9,6 +9,7 @@
 
 .crumb:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .triangle-div {

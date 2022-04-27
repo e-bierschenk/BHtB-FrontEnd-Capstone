@@ -81,6 +81,10 @@ export const Game = () => {
 
     }
 
+    const handleDetailClick = movie => {
+        console.log(movie.id)
+    }
+
     const handleBreadClick = (crumb, index) => {
         //when user clicks a link in the breadcrumb trail, we will reset the count, movie/actor, and 
         //breadcrumb trail to where it was at that point in the game
@@ -152,7 +156,7 @@ export const Game = () => {
                         </div>
                         <h1 className="logo logo-title">BRINGING HOME THE BACON</h1>
                     </div>
-                    <button className="btn-quit" onClick={() => navigate("/")}>ABANDON GAME</button>
+                    <button className="btn btn-quit" onClick={() => navigate("/")}>ABANDON GAME</button>
                 </div>
 
                 <BreadCrumb actor={actor}
@@ -179,7 +183,8 @@ export const Game = () => {
                     setFilteredArray={setFilteredArray}
                     searchInputValue={searchInputValue}
                     setSearchInputValue={setSearchInputValue}
-                    handleClick={handleCardClick} />
+                    handleClick={handleCardClick}
+                    handleDetailClick={handleDetailClick} />
             </div>
         </>
     )

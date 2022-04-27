@@ -1,21 +1,36 @@
 .movie-card {
-    background-color: var(--accent-color);
     color: #FFFFFF;
     margin: .5em;
-    padding: .5em;
-    display:flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 70ch;
+    max-width: 60ch;
+    gap: .5em;
+}
+
+.movie-card:hover {
+    cursor: pointer;
 }
 
 .movie-card h2 {
     margin: 0;
 }
 
+.movie-name {
+    background-color: var(--accent-color);
+    padding: .25em .5em;
+    flex: 1 1 85%;
+}
+
 .details-div {
-    width: 25px;
-    border-left: 5px solid white;
+    flex: 0 0 7%;
+    height: 40px;
+    width: 40px;
+    padding: .25em;
+    background-color: var(--accent-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mag-icon {

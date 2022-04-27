@@ -1,7 +1,11 @@
 .actor-card {
-    flex: 1 0 20%;
+    flex: 0 0 24.10%;
     background-color: var(--accent-color);
     color: #FFFFFF;
+}
+
+.actor-card:hover {
+    cursor: pointer;
 }
 
 .card-content {

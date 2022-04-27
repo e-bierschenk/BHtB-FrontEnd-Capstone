@@ -3,17 +3,18 @@ import { ActorCard } from './ActorCard';
 import { MovieCard } from './MovieCard';
 import "./CardList.css"
 
-export const CardList = ({handleClick, movie, actor, actorMovie, filteredArray, setFilteredArray, searchInputValue, setSearchInputValue}) => {
+export const CardList = ({handleClick, handleDetailClick, movie, actor, actorMovie, filteredArray, setFilteredArray, searchInputValue, setSearchInputValue}) => {
     
 
     return actorMovie === "actor" ?
         <>
-            <h2>Movies Starring {actor.name}</h2>
+            <h2 className='headline'>Movies Starring {actor.name}</h2>
             <div className="movie-container">
                 {filteredArray?.map(movie =>
                     (movie.role === "Actress" || movie.role === "Actor") && movie.year !== "" ?
                         <MovieCard
                             handleClick={handleClick}
+                            handleDetailClick={handleDetailClick}
                             key={movie.id}
                             movie={movie}
                         />
@@ -24,7 +25,7 @@ export const CardList = ({handleClick, movie, actor, actorMovie, filteredArray, 
         </>
         :
         <>
-            <h2>Actors in {movie.title}</h2>
+            <h2 className='headline'>Actors in {movie.title}</h2>
             <div className="actor-container">
                 {filteredArray?.map(actor =>
                     <ActorCard
