@@ -1,4 +1,4 @@
-import "./Card.css";
+import "./ActorCard.css";
 import React from "react";
 
 
@@ -6,17 +6,21 @@ import React from "react";
 export const ActorCard = ({ actor, handleClick }) => {
     return (
         <>
-            <div className="card" id={actor.id} onClick={(event) => handleClick(event)}>
+            <div className="actor-card" id={actor.id} onClick={(event) => handleClick(event)}>
                 <div className="card-content">
-                    <h2><span className="card-name">
-                        {actor.name}
+                    <div className="actor-div">
+                        <img className="actor-image"
+                            src={actor.image}
+                            alt={actor.name} />
+                    </div>
+                    <div className="text-div">
+                        <h2><span className="card-name">
+                            {actor.name}
                         </span></h2>
-                    <picture>
-                        <img src={actor.image} alt={actor.name} />
-                    </picture>
-                    <h3>As: <span className="card-rolename">
-                        {actor.asCharacter}
-                    </span></h3>
+                        <h3>As: <span className="card-rolename">
+                            {actor.asCharacter}
+                        </span></h3>
+                    </div>
                 </div>
             </div>
         </>

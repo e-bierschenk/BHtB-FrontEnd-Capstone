@@ -1,0 +1,56 @@
+.gameTheme {
+    background-color: #FFFFFF;
+    color: var(--accent-color)
+
+}
+
+.hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.left-hud {
+    display: flex;
+    margin: 1em;
+}
+
+
+.logo-img {
+    width: 100%;
+}
+
+.img-div {
+    width: 50px;
+    margin-right: 1em;
+}
+
+.logo-title {
+    margin-top: 0;
+    max-width: 14ch;
+    line-height: 0.9em;
+}
+
+.btn-quit {
+    background-color: var(--accent-color);
+    color: #FFFFFF;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+
+.controls {
+    background-color: var(--main-color);
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.controls-right {
+    display: flex;
+    margin-right: 1em;
+}
+
+.controls-right h3 {
+    margin: 1em;
+}

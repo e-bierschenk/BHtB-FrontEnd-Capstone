@@ -1,0 +1,23 @@
+.movie-card {
+    background-color: var(--accent-color);
+    color: #FFFFFF;
+    margin: .5em;
+    padding: .5em;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 70ch;
+}
+
+.movie-card h2 {
+    margin: 0;
+}
+
+.details-div {
+    width: 25px;
+    border-left: 5px solid white;
+}
+
+.mag-icon {
+    width: 100%;
+}

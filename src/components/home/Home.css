@@ -1,0 +1,65 @@
+.mainTheme {
+    background-color: var(--main-color);
+    color: #FFFFFF;
+    font-family: var(--main-font);
+}
+
+.home {
+    display: flex;
+    padding: 1rem;
+}
+
+.play {
+    flex: 1 1 66%;
+    background-image: url("../../../public/images/KB_blue_head.png");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: bottom left;
+    min-height: 650px;
+}
+
+.play p{
+    max-width: 50ch;
+    line-height: 2rem;
+    margin: 2em;
+}
+
+.myGames {
+    flex: 1 1 40%;
+    border-top: 1px #FFFFFF solid;
+    border-left: 1px #FFFFFF solid;
+}
+
+.games-list{
+    list-style-type: none;
+}
+
+hr {
+    background-color: #FFFFFF;
+    width: 75%;
+    height: 1px;
+    border: none;
+}
+
+.text-link,
+.text-link:visited {
+    color: var(--accent-color)
+}
+
+.list-item {
+    margin: 2em .5em
+}
+
+.game-title {
+    text-align: center;
+}
+
+button {
+    margin-top: 125px;
+    margin-left: 150px;
+    font-weight: 600;
+    color: var(--main-color);
+    background-color: #FFFFFF;
+    border: none;
+    padding: 1em;
+}

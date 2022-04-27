@@ -1,8 +1,20 @@
 .breadcrumb {
     display: flex;
     flex-direction: row;
+    margin: .5em 1em;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.crumb {
+.crumb:hover {
     text-decoration: underline;
+}
+
+.triangle-div {
+    width: 50px;
+}
+
+.triangle {
+    width: 100%
 }

@@ -1,0 +1,19 @@
+.actor-card {
+    flex: 1 0 20%;
+    background-color: var(--accent-color);
+    color: #FFFFFF;
+}
+
+.card-content {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.actor-div {
+    width: 100%;
+}
+
+.actor-image {
+    width: 100%;
+}
