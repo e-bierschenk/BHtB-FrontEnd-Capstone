@@ -24,12 +24,12 @@ export const Game = () => {
     const startTime = new Date()
 
     //these are used for testing, remove later
-    // const startmovieId = "tt0110413"
     // const startactorId = "nm0000492" //Jennifer Jason Leigh
     // const startactorId = "nm0000204" //natalie portman
     // const startactorId = "nm0000114" //steve buscemi
     // const startactorId = "nm0005188" //james marsden
-    const startactorId = "nm0000368" //laura dern
+    // const startactorId = "nm0000368" //laura dern
+    const startactorId = "nm0000353" //willem defoe
 
 
     //functions to get a movie's actors or an actor's movies, and set state
