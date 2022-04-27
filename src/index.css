@@ -1,10 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Poppins&display=swap');
+
+:root {
+  --main-color: #6AB7B9;
+  --accent-color: #2D4398;
+  --main-font: 'Poppins', sans-serif;
+  --logo-font: 'Montserrat', sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: var(--main-font);
+}
+
+ul {
+  list-style-type: none;
 }
 
 code {
@@ -12,9 +23,7 @@ code {
     monospace;
 }
 
-.container-cards{
-  display:flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  margin: 0 1em;
+button {
+  cursor: pointer;
 }
+

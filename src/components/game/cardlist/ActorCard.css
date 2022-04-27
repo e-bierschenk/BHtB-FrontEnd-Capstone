@@ -1,0 +1,23 @@
+.actor-card {
+    flex: 0 0 24.10%;
+    background-color: var(--accent-color);
+    color: #FFFFFF;
+}
+
+.actor-card:hover {
+    cursor: pointer;
+}
+
+.card-content {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.actor-div {
+    width: 100%;
+}
+
+.actor-image {
+    width: 100%;
+}

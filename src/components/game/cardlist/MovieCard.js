@@ -1,19 +1,20 @@
-import "./Card.css";
+import "./MovieCard.css";
 import React from "react";
 
 
 
-export const MovieCard = ({ movie, handleClick }) => {
+export const MovieCard = ({ movie, handleClick, handleDetailClick }) => {
     return (
         <>
-            <div className="card" id={movie.id} onClick={(event) => handleClick(event)}>
-                <div className="card-content">
-                    <h2><span className="card-name">
+            <div className="movie-card">
+                <h2 className="movie-name"
+                    onClick={(event) => handleClick(event)} id={movie.id}><span>
                         {movie.title}
-                        </span></h2>
-                    <h3>Year: <span className="card-year">
-                        {movie.year}
-                    </span></h3>
+                    </span></h2>
+                <div className="details-div" 
+                    onClick={() => handleDetailClick(movie)}>
+                    <img src="/images/magnifying_glass.png" alt="magnifying glass"
+                        className="mag-icon" />
                 </div>
             </div>
         </>

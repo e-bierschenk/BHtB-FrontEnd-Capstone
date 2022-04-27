@@ -1,11 +1,15 @@
+import React from "react"
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { CardList } from "./cardlist/CardList"
+import { CardSearch } from "./cardsearch/CardSearch"
 import { getCastByMovieId, getMoviesByActorId } from "../../modules/imdbManager.js"
 import { BreadCrumb } from "./breadcrumb/BreadCrumb"
-import { useNavigate } from "react-router-dom"
-
 import { trailToDbFormat } from "../../helpers/helpers"
 import { addGame } from "../../modules/baconManager"
+import { GameClock } from "./gameclock/GameClock"
+
+import "./Game.css"
 
 
 export const Game = () => {
@@ -21,7 +25,7 @@ export const Game = () => {
 
     const navigate = useNavigate()
 
-    const startTime = new Date()
+    const startTime = new Date().getTime()
 
     //these are used for testing, remove later
     // const startactorId = "nm0000492" //Jennifer Jason Leigh
@@ -46,13 +50,13 @@ export const Game = () => {
         if (actorMovie === "actor") {
             //grab the movie and cast the user clicked
             getMovie(event.currentTarget.id)
-            .then(() => setActorMovie("movie"))
-            .then(() => setNormalClick(normalClick + 1))
+                .then(() => setActorMovie("movie"))
+                .then(() => setNormalClick(normalClick + 1))
         } else {
             //add one to link count
             const newCount = linkCount + 1
             setLinkCount(newCount)
-            
+
             //check to see if the clicked actor is kevin bacon otherwise, keep looping through movie/actor steps
             if (event.currentTarget.id === "nm0000102") {
                 //trigger end of game steps
@@ -70,21 +74,25 @@ export const Game = () => {
 
             } else {
                 getActor(event.currentTarget.id)
-                .then(() => setActorMovie("actor"))
-                .then(() => setNormalClick(normalClick + 1))
+                    .then(() => setActorMovie("actor"))
+                    .then(() => setNormalClick(normalClick + 1))
             }
         }
-        
+
+    }
+
+    const handleDetailClick = movie => {
+        console.log(movie.id)
     }
 
     const handleBreadClick = (crumb, index) => {
         //when user clicks a link in the breadcrumb trail, we will reset the count, movie/actor, and 
         //breadcrumb trail to where it was at that point in the game
-        
+
         //set the link count
         const newCount = Math.floor(index / 2)
         setLinkCount(newCount)
-        
+
         //slice breacrumbtrail and set new trail
         const newTrail = trail.slice(0, index + 1)
         setTrail(newTrail)
@@ -92,19 +100,34 @@ export const Game = () => {
         //set movie or actor and actormovie and filtered array
         if (index % 2 === 0) {
             setActor(crumb)
-            setActorMovie("actor")  
+            setActorMovie("actor")
             setFilteredArray(crumb.castMovies)
         } else {
             setMovie(crumb)
-            setActorMovie("movie") 
+            setActorMovie("movie")
             setFilteredArray(crumb.actors)
         }
-            
+
+    }
+
+    const handleInputChange = (event) => {
+        console.log(event.target.value)
+        let filtered = []
+        if (actorMovie === "actor") {
+            filtered = actor.castMovies.filter(movie => movie.title.toLowerCase().includes(event.target.value.toLowerCase()))
+        } else {
+            filtered = movie.actors.filter(actor => actor.name.toLowerCase().includes(event.target.value.toLowerCase()))
+        }
+        console.log(filtered)
+        setSearchInputValue(event.target.value)
+        setFilteredArray(filtered)
     }
 
     //at start of page get actor then set actor
     useEffect(() => {
         getActor(startactorId).then(setInitialActor)
+        document.body.className = "";
+        document.body.className = "gameTheme";
     }, []);
 
     //after actor is set, update the filtered array to the full set of movies
@@ -124,24 +147,45 @@ export const Game = () => {
 
     return (
         <>
-            <h1>GAME VIEW</h1>
-            <BreadCrumb actor={actor}
-                initialActor={initialActor}
-                movie={movie}
-                actorMovie={actorMovie}
-                setTrail={setTrail}
-                trail={trail}
-                handleClick={handleBreadClick}
-                normalClick={normalClick} />
-            <h3>Links Used: {linkCount}</h3>
-            <CardList actor={actor}
-                movie={movie}
-                actorMovie={actorMovie}
-                filteredArray={filteredArray}
-                setFilteredArray={setFilteredArray}
-                searchInputValue={searchInputValue}
-                setSearchInputValue={setSearchInputValue} 
-                handleClick={handleCardClick} />
+            <div className="game">
+                <div className="hud">
+                    <div className="left-hud">
+                        <div className="img-div">
+                            <img src="/images/KB_green_head.png" alt="Kevin Bacon Green"
+                                className="logo-img" />
+                        </div>
+                        <h1 className="logo logo-title">BRINGING HOME THE BACON</h1>
+                    </div>
+                    <button className="btn btn-quit" onClick={() => navigate("/")}>ABANDON GAME</button>
+                </div>
+
+                <BreadCrumb actor={actor}
+                    initialActor={initialActor}
+                    movie={movie}
+                    actorMovie={actorMovie}
+                    setTrail={setTrail}
+                    trail={trail}
+                    handleClick={handleBreadClick}
+                    normalClick={normalClick} />
+
+                <div className="controls">
+                    <CardSearch searchInputValue={searchInputValue} handleInputChange={handleInputChange} autoFocus />
+                    <div className="controls-right">
+                        <h3>Connections: {linkCount}</h3>
+                        <GameClock startTime={startTime} />
+                    </div>
+                </div>
+
+                <CardList actor={actor}
+                    movie={movie}
+                    actorMovie={actorMovie}
+                    filteredArray={filteredArray}
+                    setFilteredArray={setFilteredArray}
+                    searchInputValue={searchInputValue}
+                    setSearchInputValue={setSearchInputValue}
+                    handleClick={handleCardClick}
+                    handleDetailClick={handleDetailClick} />
+            </div>
         </>
     )
 }

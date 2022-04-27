@@ -1,0 +1,16 @@
+.cardsearch {
+    background-color: var(--main-color);
+    color: #FFFFFF;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px white solid;
+    padding: .5em;
+    margin-left: 1em;
+    outline: none;
+}
+
+.cardsearch::placeholder {
+    color: #FFFFFF;
+    font-family: var(--main-font);
+    font-size: 16px;
+}

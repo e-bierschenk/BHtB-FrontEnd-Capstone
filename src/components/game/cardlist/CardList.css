@@ -1,0 +1,11 @@
+.actor-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1em;
+    margin: 0 1em;
+}
+
+.headline {
+    margin-left: .75em;
+}

@@ -1,10 +1,36 @@
-
+.navbar {
+    display:flex;
+    justify-content: space-between;
+}
 .nav {
     display: flex;
     justify-content: space-evenly;
+    background-color: var(--main-color);
+    color: #FFFFFF;
+    padding: 1em;
+    margin: 1em;
 }
 
 .nav-item {
     list-style-type: none;
-    
+    margin: 1em;
+}
+
+.nav-link {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    color: var(--accent-color);
+    font-family: var(--logo-font);
+}
+
+.logout {
+    align-self: flex-end;
+    color: var(--accent-color);
 }
