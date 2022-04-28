@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./GameClock.css"
 
 export const GameClock = ({ startTime }) => {
     const [seconds, setSeconds] = useState(0)
@@ -24,7 +25,7 @@ export const GameClock = ({ startTime }) => {
     }, 1000)
 
     return (<>
-        <h3>{minutes}:{seconds}</h3>
+        <h3 className="clock">{minutes}:{seconds}</h3>
     </>
 
     )
