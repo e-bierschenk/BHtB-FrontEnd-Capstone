@@ -6,7 +6,7 @@ import { CardSearch } from "./cardsearch/CardSearch"
 import { getCastByMovieId, getMoviesByActorId } from "../../modules/imdbManager.js"
 import { BreadCrumb } from "./breadcrumb/BreadCrumb"
 import { trailToDbFormat } from "../../helpers/helpers"
-import { addGame } from "../../modules/baconManager"
+import { addGame, getCoinsByUserId, updateCoinsByUserId, getTopActors } from "../../modules/baconManager"
 import { GameClock } from "./gameclock/GameClock"
 
 import "./Game.css"
@@ -22,6 +22,7 @@ export const Game = () => {
     const [trail, setTrail] = useState([])
     const [linkCount, setLinkCount] = useState(0) //count of actor links used
     const [normalClick, setNormalClick] = useState(1)  //used to control when sideEffects happen
+    const [coins, setCoins] = useState(0)
 
     const navigate = useNavigate()
 
@@ -33,16 +34,20 @@ export const Game = () => {
     // const startactorId = "nm0000114" //steve buscemi
     // const startactorId = "nm0005188" //james marsden
     // const startactorId = "nm0000368" //laura dern
-    const startactorId = "nm0000353" //willem defoe
+    // const startactorId = "nm0000353" //willem defoe
+    // const startactorId = "nm0000172" //harvey keitel
+    // const startactorId = "nm0000673" //marissa tomei
+    // const startactorId = "nm0000607" //paul reubens
 
 
-    //functions to get a movie's actors or an actor's movies, and set state
+
+    //functions to get a movie's actors or an actor's movies, and set state, get coins as well
     const getMovie = (movieId) => getCastByMovieId(movieId).then(setMovie)
     const getActor = (actorId) => getMoviesByActorId(actorId).then(setActor)
+    const getCoins = (userId) => getCoinsByUserId(userId).then(setCoins)
 
     //click function for when the user clicks a card in the cardlist
     const handleCardClick = (event) => {
-        console.log("clicked ", event.currentTarget.id)
         //reset states of search input and filtered array when user clicks
         setSearchInputValue("")
         setFilteredArray([])
@@ -110,22 +115,37 @@ export const Game = () => {
 
     }
 
+    const handleCoinClick = () => {
+        const coinObj = {
+            id: JSON.parse(sessionStorage.getItem("bacon_user")).id,
+            baconbits: coins - 1
+        }
+
+        updateCoinsByUserId(coinObj)
+            .then(res => setCoins(res.baconbits))
+    }
+
     const handleInputChange = (event) => {
-        console.log(event.target.value)
         let filtered = []
         if (actorMovie === "actor") {
             filtered = actor.castMovies.filter(movie => movie.title.toLowerCase().includes(event.target.value.toLowerCase()))
         } else {
             filtered = movie.actors.filter(actor => actor.name.toLowerCase().includes(event.target.value.toLowerCase()))
         }
-        console.log(filtered)
         setSearchInputValue(event.target.value)
         setFilteredArray(filtered)
     }
 
-    //at start of page get actor then set actor
+    //at start of page get actor then set actor, get coins and set them
     useEffect(() => {
-        getActor(startactorId).then(setInitialActor)
+        //gets the top actor array(1000 long), then rolls a random number from 0-999, and sets that actor as the s
+        getTopActors().then((res) => {
+            const rand = Math.floor(Math.random() * 999)
+            return res[rand].id
+        })
+            .then(startactorId => getActor(startactorId))
+            .then(setInitialActor)
+        getCoins(JSON.parse(sessionStorage.getItem("bacon_user")).id)
         document.body.className = "";
         document.body.className = "gameTheme";
     }, []);
@@ -169,7 +189,11 @@ export const Game = () => {
                     normalClick={normalClick} />
 
                 <div className="controls">
-                    <CardSearch searchInputValue={searchInputValue} handleInputChange={handleInputChange} autoFocus />
+                    <div className="controls-left">
+                        <button className="btn btn-bacon"
+                            onClick={handleCoinClick}>USE BACONBIT: {coins}</button>
+                        <CardSearch searchInputValue={searchInputValue} handleInputChange={handleInputChange} autoFocus />
+                    </div>
                     <div className="controls-right">
                         <h3>Connections: {linkCount}</h3>
                         <GameClock startTime={startTime} />
