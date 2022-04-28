@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./GameClock.css"
+import "./GameClock.css "
 
 export const GameClock = ({ startTime }) => {
     const [seconds, setSeconds] = useState(0)
