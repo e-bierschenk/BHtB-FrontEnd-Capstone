@@ -6,6 +6,7 @@
 
 .actor-card:hover {
     cursor: pointer;
+    opacity: 85%;
 }
 
 .card-content {

@@ -6,6 +6,18 @@
     margin: 0 1em;
 }
 
+.movie-container {
+    flex-shrink: 0;
+}
+
 .headline {
     margin-left: .75em;
+}
+
+.movie-view {
+    display: flex;
+}
+
+.left {
+    flex: 0 0 50%;
 }

@@ -3,14 +3,12 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { CardList } from "./cardlist/CardList"
 import { CardSearch } from "./cardsearch/CardSearch"
-import { getCastByMovieId, getMoviesByActorId } from "../../modules/imdbManager.js"
+import { getCastByMovieId, getMoviesByActorId, getPostersByMovieId } from "../../modules/imdbManager.js"
 import { BreadCrumb } from "./breadcrumb/BreadCrumb"
 import { trailToDbFormat } from "../../helpers/helpers"
 import { addGame, getCoinsByUserId, updateCoinsByUserId, getTopActors } from "../../modules/baconManager"
 import { GameClock } from "./gameclock/GameClock"
-
 import "./Game.css"
-
 
 export const Game = () => {
     const [actor, setActor] = useState({})
@@ -23,21 +21,11 @@ export const Game = () => {
     const [linkCount, setLinkCount] = useState(0) //count of actor links used
     const [normalClick, setNormalClick] = useState(1)  //used to control when sideEffects happen
     const [coins, setCoins] = useState(0)
+    const [detailMovie, setDetailMovie] = useState({}) //state for the movie detail
 
     const navigate = useNavigate()
 
     const startTime = new Date().getTime()
-
-    //these are used for testing, remove later
-    // const startactorId = "nm0000492" //Jennifer Jason Leigh
-    // const startactorId = "nm0000204" //natalie portman
-    // const startactorId = "nm0000114" //steve buscemi
-    // const startactorId = "nm0005188" //james marsden
-    // const startactorId = "nm0000368" //laura dern
-    // const startactorId = "nm0000353" //willem defoe
-    // const startactorId = "nm0000172" //harvey keitel
-    // const startactorId = "nm0000673" //marissa tomei
-    // const startactorId = "nm0000607" //paul reubens
 
 
 
@@ -87,7 +75,8 @@ export const Game = () => {
     }
 
     const handleDetailClick = movie => {
-        console.log(movie.id)
+        //when user clicks get movie detials, get poster and movie info and set state for details
+        getPostersByMovieId(movie.id).then(setDetailMovie)
     }
 
     const handleBreadClick = (crumb, index) => {
@@ -199,16 +188,17 @@ export const Game = () => {
                         <h3>Connections: {linkCount}</h3>
                     </div>
                 </div>
-
-                <CardList actor={actor}
-                    movie={movie}
-                    actorMovie={actorMovie}
-                    filteredArray={filteredArray}
-                    setFilteredArray={setFilteredArray}
-                    searchInputValue={searchInputValue}
-                    setSearchInputValue={setSearchInputValue}
-                    handleClick={handleCardClick}
-                    handleDetailClick={handleDetailClick} />
+                    <CardList actor={actor}
+                        movie={movie}
+                        actorMovie={actorMovie}
+                        filteredArray={filteredArray}
+                        setFilteredArray={setFilteredArray}
+                        searchInputValue={searchInputValue}
+                        setSearchInputValue={setSearchInputValue}
+                        handleClick={handleCardClick}
+                        handleDetailClick={handleDetailClick}
+                        detailMovie={detailMovie}
+                        setDetailMovie={setDetailMovie} />
             </div>
         </>
     )

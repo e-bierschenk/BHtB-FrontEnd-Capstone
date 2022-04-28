@@ -10,6 +10,7 @@
 
 .movie-card:hover {
     cursor: pointer;
+    opacity: 85%;
 }
 
 .movie-card h2 {

@@ -16,3 +16,11 @@ export const getMoviesByActorId = actorId => {
             console.log(res)
             return res})
 }
+
+export const getPostersByMovieId = movieId => {
+    return fetch (`${imdbApi.url}/Posters/${imdbApi.key}/${movieId}`)
+        .then(response => response.json())
+        .then(res => {
+            console.log(res)
+            return res})
+}

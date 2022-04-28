@@ -1,0 +1,11 @@
+.detail-contaner {
+    flex: 0 0 40%;
+}
+
+.detail-div {
+    max-width: 200px;
+}
+
+.detail-img {
+    width: 100%;
+}
