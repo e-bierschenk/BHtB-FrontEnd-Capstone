@@ -195,8 +195,8 @@ export const Game = () => {
                         <CardSearch searchInputValue={searchInputValue} handleInputChange={handleInputChange} autoFocus />
                     </div>
                     <div className="controls-right">
-                        <h3>Connections: {linkCount}</h3>
                         <GameClock startTime={startTime} />
+                        <h3>Connections: {linkCount}</h3>
                     </div>
                 </div>
 
