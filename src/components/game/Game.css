@@ -38,12 +38,21 @@
     margin-top: 1em;
 }
 
+.btn-bacon {
+    color: var(--main-color);
+}
+
 .controls {
     background-color: var(--main-color);
     color: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.controls-left {
+    padding-right: 1em;
+    margin-left: 1em;
 }
 
 .controls-right {

@@ -50,6 +50,11 @@ hr {
     margin: 2em .5em
 }
 
+.list-item:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .game-title {
     text-align: center;
 }
@@ -66,7 +71,7 @@ hr {
 }
 
 .start-btn {
-    margin-top: 125px;
+    margin-top: 8px;
     margin-left: 150px;
     color: var(--main-color);
     background-color: #FFFFFF;
