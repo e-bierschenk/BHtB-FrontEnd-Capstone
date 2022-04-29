@@ -1,5 +1,6 @@
 .detail-contaner {
     flex: 0 0 40%;
+    margin-left: 1em;
 }
 
 .detail-div {
@@ -8,4 +9,18 @@
 
 .detail-img {
     width: 100%;
+}
+
+
+.btn-close-detail {
+    background-color: var(--accent-color);
+    color: #FFFFFF;
+    font-weight: 600;
+    border: none;
+    padding: 1em;
+    transition: opacity 0.25s;
+}
+
+.btn-close-detail:hover {
+    opacity: 75%;
 }

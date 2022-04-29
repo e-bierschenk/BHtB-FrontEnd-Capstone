@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { CardList } from "./cardlist/CardList"
 import { CardSearch } from "./cardsearch/CardSearch"
-import { getCastByMovieId, getMoviesByActorId, getPostersByMovieId } from "../../modules/imdbManager.js"
+import { getCastByMovieId, getMovieByMovieId, getMoviesByActorId, getPostersByMovieId } from "../../modules/imdbManager.js"
 import { BreadCrumb } from "./breadcrumb/BreadCrumb"
 import { trailToDbFormat } from "../../helpers/helpers"
 import { addGame, getCoinsByUserId, updateCoinsByUserId, getTopActors } from "../../modules/baconManager"
@@ -76,7 +76,7 @@ export const Game = () => {
 
     const handleDetailClick = movie => {
         //when user clicks get movie detials, get poster and movie info and set state for details
-        getPostersByMovieId(movie.id).then(setDetailMovie)
+        getMovieByMovieId(movie.id).then(setDetailMovie)
     }
 
     const handleBreadClick = (crumb, index) => {
