@@ -26,7 +26,7 @@
 }
 
 .logo-title {
-    margin-top: 0;
+    margin: 0;
     max-width: 14ch;
     line-height: 0.9em;
 }
@@ -39,7 +39,9 @@
 }
 
 .btn-bacon {
+    background-color: #FFFFFF;
     color: var(--main-color);
+    opacity: 100%;
 }
 
 .controls {
