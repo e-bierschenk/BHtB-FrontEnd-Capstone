@@ -2,3 +2,7 @@ export const imdbApi = {
     key: "MyKey",
     url: "https://imdb-api.com/API"
 }
+
+export const baconApi = {
+    url: "http://localhost:8088"
+}
