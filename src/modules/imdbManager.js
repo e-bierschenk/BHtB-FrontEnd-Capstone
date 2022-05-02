@@ -1,8 +1,8 @@
-import { imdbApi } from "./Settings.js" 
+import { netlifyConfig } from "../helpers/apiKeys.js"
 
 
 export const getCastByMovieId = movieId => {
-    return fetch (`${imdbApi.url}/FullCast/${imdbApi.key}/${movieId}`)
+    return fetch (`${netlifyConfig.imdbUrl}/FullCast/${netlifyConfig.imdbApiKey}/${movieId}`)
         .then(response => response.json())
         .then(res => {
             console.log(res)
@@ -10,7 +10,7 @@ export const getCastByMovieId = movieId => {
 }
 
 export const getMoviesByActorId = actorId => {
-    return fetch (`${imdbApi.url}/Name/${imdbApi.key}/${actorId}`)
+    return fetch (`${netlifyConfig.imdbUrl}/Name/${netlifyConfig.imdbApiKey}/${actorId}`)
         .then(response => response.json())
         .then(res => {
             console.log(res)
@@ -18,7 +18,7 @@ export const getMoviesByActorId = actorId => {
 }
 
 export const getMovieByMovieId = movieId => {
-    return fetch (`${imdbApi.url}/Title/${imdbApi.key}/${movieId}`)
+    return fetch (`${netlifyConfig.imdbUrl}/Title/${netlifyConfig.imdbApiKey}/${movieId}`)
         .then(response => response.json())
         .then(res => {
             console.log(res)

@@ -25,5 +25,6 @@ yarn-error.log*
 #api-keys
 /src/modules/settings.js
 /api/database.json
+.env
 
 .eslintcache
