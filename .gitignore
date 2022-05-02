@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 #api-keys
-/src/modules/settings.js
+/src/modules/Settings.js
 /api/database.json
 .env
 
