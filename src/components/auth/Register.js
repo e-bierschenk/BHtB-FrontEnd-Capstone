@@ -12,7 +12,7 @@ export const Register = ({ setAuthUser }) => {
 
 
     const existingUserCheck = () => {
-        return fetch(`${ netlifyConfig.baconUrl }/users?email=${email.current.value}`)
+        return fetch(`${netlifyConfig.baconUrl}/users?email=${email.current.value}`)
             .then(res => res.json())
             .then(user => !!user.length)
     }
@@ -23,7 +23,7 @@ export const Register = ({ setAuthUser }) => {
         existingUserCheck()
             .then((userExists) => {
                 if (!userExists) {
-                    fetch(`${ netlifyConfig }/users`, {
+                    fetch(`${ netlifyConfig.baconUrl }/users`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
