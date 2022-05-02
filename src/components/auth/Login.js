@@ -1,6 +1,7 @@
 import React, { useRef } from "react"
 import { Link } from "react-router-dom";
 import { useNavigate} from "react-router-dom"
+import { netlifyConfig } from "../../helpers/apiKeys";
 import "./Login.css"
 
 export const Login = ({ setAuthUser }) => {
@@ -9,7 +10,7 @@ export const Login = ({ setAuthUser }) => {
     const navigate = useNavigate()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/users?email=${email.current.value}`)
+        return fetch(`${netlifyConfig.baconUrl}/users?email=${email.current.value}`)
             .then(res => res.json())
             .then(user => user.length ? user[0] : false)
     }
@@ -37,7 +38,7 @@ export const Login = ({ setAuthUser }) => {
 
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Nashville Kennels</h1>
+                    <h1>Bringing Home the Bacon</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
