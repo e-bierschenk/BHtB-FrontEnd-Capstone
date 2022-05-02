@@ -30,7 +30,8 @@ export const Register = ({ setAuthUser }) => {
                         },
                         body: JSON.stringify({
                             email: email.current.value,
-                            name: `${firstName.current.value} ${lastName.current.value}`
+                            name: `${firstName.current.value} ${lastName.current.value}`,
+                            baconbits: 9999
                         })
                     })
                         .then(res => res.json())
