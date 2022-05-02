@@ -10,7 +10,7 @@ export const Login = ({ setAuthUser }) => {
     const navigate = useNavigate()
 
     const existingUserCheck = () => {
-        return fetch(`${netlifyConfig.baconUrl}?email=${email.current.value}`)
+        return fetch(`${netlifyConfig.baconUrl}/users?email=${email.current.value}`)
             .then(res => res.json())
             .then(user => user.length ? user[0] : false)
     }
