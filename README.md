@@ -22,6 +22,10 @@ cd ./api
 mv database.json.start database.json
 json-server -p 8088 -w database.json
 ```
+5. Start the app.
+```bash
+npm start
+```
 
 
 ## Wireframe
