@@ -1,5 +1,6 @@
 import React, { useRef } from "react"
 import { useNavigate } from "react-router-dom"
+import { netlifyConfig } from "../../helpers/apiKeys"
 import "./Login.css"
 
 export const Register = ({ setAuthUser }) => {
@@ -11,7 +12,7 @@ export const Register = ({ setAuthUser }) => {
 
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/users?email=${email.current.value}`)
+        return fetch(`${ netlifyConfig.baconUrl }/users?email=${email.current.value}`)
             .then(res => res.json())
             .then(user => !!user.length)
     }
@@ -22,7 +23,7 @@ export const Register = ({ setAuthUser }) => {
         existingUserCheck()
             .then((userExists) => {
                 if (!userExists) {
-                    fetch("http://localhost:8088/users", {
+                    fetch(`${ netlifyConfig }/users`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
