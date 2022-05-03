@@ -1,4 +1,4 @@
-import React, { StrictMode } from 'react';
+import React from 'react';
 import { BrowserRouter as Router } from "react-router-dom"
 import { createRoot } from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';

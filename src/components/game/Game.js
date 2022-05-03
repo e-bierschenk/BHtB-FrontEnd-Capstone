@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { CardList } from "./cardlist/CardList"
 import { CardSearch } from "./cardsearch/CardSearch"
-import { getCastByMovieId, getMovieByMovieId, getMoviesByActorId, getPostersByMovieId } from "../../modules/imdbManager.js"
+import { getCastByMovieId, getMovieByMovieId, getMoviesByActorId } from "../../modules/imdbManager.js"
 import { BreadCrumb } from "./breadcrumb/BreadCrumb"
 import { trailToDbFormat } from "../../helpers/helpers"
 import { addGame, getCoinsByUserId, updateCoinsByUserId, getTopActors } from "../../modules/baconManager"
@@ -39,6 +39,7 @@ export const Game = () => {
         //reset states of search input and filtered array when user clicks
         setSearchInputValue("")
         setFilteredArray([])
+        setDetailMovie({})
         //check whether we are on an actor or movie step
         if (actorMovie === "actor") {
             //grab the movie and cast the user clicked
