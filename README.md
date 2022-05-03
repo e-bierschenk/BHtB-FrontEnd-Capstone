@@ -3,26 +3,28 @@ A six-degrees of Kevin Bacon App Made in React. In this game you attempt to conn
 
 ## Installation Instructions
 
-1. Clone the repo
+For now the app can be found at [bhtb.netlify.app](https://bhtb.netlify.app), but if you would like to run a local copy follow the instructions below.
+
+Clone the repo.
 ```bash
 git@github.com:e-bierschenk/BHtB-FrontEnd-Capstone.git
 ```
-2. Install the react app
+Install the react app.
 ```bash
 npm install
 ``` 
-3. Register for [imdb-api key](https://imdb-api.com/Identity/Account/Register). Rename settings.js.example to settings.js.  Replace "My Key" in settings.js with your key from imdb-api.
+Register for [imdb-api key](https://imdb-api.com/Identity/Account/Register). Rename settings.js.example to settings.js.  Replace "My Key" in settings.js with your key from imdb-api.
 ```bash
 cd modules
 mv Settings.js.example Settings.js
 ```
-4. Rename json db and start json server.
+Rename json db and start json server.
 ```bash
 cd ./api
 mv database.json.start database.json
 json-server -p 8088 -w database.json
 ```
-5. Start the app.
+Start the app.
 ```bash
 npm start
 ```

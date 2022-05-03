@@ -39,7 +39,7 @@ export const Home = () => {
                     {!showDetails ?
                         <>
                             <h2>How to play:</h2>
-                            <p>Bringing Home the Bacon is a <a className="text-link" href="https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon" target="_blank">six-degrees of Kevin Bacon</a> game, where you are tasked to connect a random starting actor by connecting them to another actor via a film that both actors have appeared in together.  Repeat the process until you reach Kevin Bacon.  Try to do it in the fewest links possible to get a high score!</p>
+                            <p>Bringing Home the Bacon is a <a className="text-link" href="https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon" target="_blank" rel="noreferrer">six-degrees of Kevin Bacon</a> game, where you are tasked to connect a random starting actor by connecting them to another actor via a film that both actors have appeared in together.  Repeat the process until you reach Kevin Bacon.  Try to do it in the fewest links possible to get a high score!</p>
 
                             <button className="btn start-btn" onClick={() => navigate("/game")}>START GAME</button>
                         </>

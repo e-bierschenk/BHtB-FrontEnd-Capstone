@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { ActorCard } from './ActorCard';
 import { MovieCard } from './MovieCard';
 import "./CardList.css"

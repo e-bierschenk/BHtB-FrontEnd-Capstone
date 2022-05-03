@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import "./DetailView.css"
 
 export const DetailView = ({ actor, detailMovie, setDetailMovie }) => {
@@ -12,7 +11,7 @@ export const DetailView = ({ actor, detailMovie, setDetailMovie }) => {
                     <div className="detail-div">
                         <img className="detail-img"
                             src={detailMovie?.image}
-                            alt={detailMovie?.image}></img>
+                            alt={detailMovie?.title}></img>
                     </div>
                     <h3>{detailMovie?.title} - {detailMovie?.year}</h3>
                     <p>{detailMovie?.plot}</p>
