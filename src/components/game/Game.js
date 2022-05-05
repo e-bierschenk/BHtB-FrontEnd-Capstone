@@ -8,6 +8,7 @@ import { BreadCrumb } from "./breadcrumb/BreadCrumb"
 import { trailToDbFormat } from "../../helpers/helpers"
 import { addGame, getCoinsByUserId, updateCoinsByUserId, getTopActors } from "../../modules/baconManager"
 import { GameClock } from "./gameclock/GameClock"
+import { bfs } from "../../helpers/bfs"
 import "./Game.css"
 
 export const Game = () => {
@@ -22,6 +23,8 @@ export const Game = () => {
     const [normalClick, setNormalClick] = useState(1)  //used to control when sideEffects happen
     const [coins, setCoins] = useState(0)
     const [detailMovie, setDetailMovie] = useState({}) //state for the movie detail
+    const [nextStep, setNextStep] = useState("")
+    const [buttonDisabled, setButtonDisabled] = useState(false)
 
     const navigate = useNavigate()
 
@@ -40,6 +43,8 @@ export const Game = () => {
         setSearchInputValue("")
         setFilteredArray([])
         setDetailMovie({})
+        setNextStep("")
+        setButtonDisabled(false)
         //check whether we are on an actor or movie step
         if (actorMovie === "actor") {
             //grab the movie and cast the user clicked
@@ -84,6 +89,9 @@ export const Game = () => {
         //when user clicks a link in the breadcrumb trail, we will reset the count, movie/actor, and 
         //breadcrumb trail to where it was at that point in the game
 
+        setNextStep("")
+        setButtonDisabled(false)
+
         //set the link count
         const newCount = Math.floor(index / 2)
         setLinkCount(newCount)
@@ -106,6 +114,7 @@ export const Game = () => {
     }
 
     const handleCoinClick = () => {
+        setButtonDisabled(true)
         const coinObj = {
             id: JSON.parse(sessionStorage.getItem("bacon_user")).id,
             baconbits: coins - 1
@@ -113,6 +122,10 @@ export const Game = () => {
 
         updateCoinsByUserId(coinObj)
             .then(res => setCoins(res.baconbits))
+        const start = actorMovie === 'actor' ? actor.name : movie
+        console.log(start)
+        bfs(start)
+            .then(optimalPath => setNextStep(optimalPath[1].value.split(" (")[0]))
     }
 
     const handleInputChange = (event) => {
@@ -180,8 +193,10 @@ export const Game = () => {
 
                 <div className="controls">
                     <div className="controls-left">
-                        <button className="btn btn-bacon"
-                            onClick={handleCoinClick}>USE BACONBIT: {coins}</button>
+                        {!buttonDisabled ? <button className="btn btn-bacon"
+                            onClick={handleCoinClick}>USE BACONBIT: {coins}</button> : <button className="btn btn-bacon"
+                            onClick={handleCoinClick} disabled>HINT USED</button>}
+                        
                         <CardSearch searchInputValue={searchInputValue} handleInputChange={handleInputChange} autoFocus />
                     </div>
                     <div className="controls-right">
@@ -199,7 +214,8 @@ export const Game = () => {
                         handleClick={handleCardClick}
                         handleDetailClick={handleDetailClick}
                         detailMovie={detailMovie}
-                        setDetailMovie={setDetailMovie} />
+                        setDetailMovie={setDetailMovie}
+                        nextStep={nextStep} />
             </div>
         </>
     )
