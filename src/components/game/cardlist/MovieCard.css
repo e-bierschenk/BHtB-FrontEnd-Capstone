@@ -8,6 +8,7 @@
     gap: .5em;
 }
 
+
 .movie-card:hover {
     cursor: pointer;
     opacity: 85%;
@@ -36,4 +37,8 @@
 
 .mag-icon {
     width: 100%;
+}
+
+.movie-card-next {
+    background-color: var(--main-color);
 }

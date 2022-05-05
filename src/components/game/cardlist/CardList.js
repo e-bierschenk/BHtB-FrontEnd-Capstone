@@ -4,7 +4,7 @@ import { MovieCard } from './MovieCard';
 import "./CardList.css"
 import { DetailView } from '../detailView/DetailView';
 
-export const CardList = ({ handleClick, handleDetailClick, movie, actor, actorMovie, filteredArray, detailMovie, setDetailMovie }) => {
+export const CardList = ({ handleClick, handleDetailClick, movie, actor, actorMovie, filteredArray, detailMovie, setDetailMovie, nextStep }) => {
 
 
     return actorMovie === "actor" ?
@@ -20,6 +20,7 @@ export const CardList = ({ handleClick, handleDetailClick, movie, actor, actorMo
                                     handleDetailClick={handleDetailClick}
                                     key={movie.id}
                                     movie={movie}
+                                    nextStep={nextStep}
                                 />
                                 :
                                 ""
@@ -40,6 +41,7 @@ export const CardList = ({ handleClick, handleDetailClick, movie, actor, actorMo
                         handleClick={handleClick}
                         key={actor.id}
                         actor={actor}
+                        nextStep={nextStep}
                     />)}
             </div>
         </>

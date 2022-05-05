@@ -3,10 +3,10 @@ import React from "react";
 
 
 
-export const ActorCard = ({ actor, handleClick }) => {
+export const ActorCard = ({ actor, handleClick, nextStep }) => {
     return (
         <>
-            <div className="actor-card" id={actor.id} onClick={(event) => handleClick(event)}>
+            <div className={nextStep === actor.name ? "actor-card-next actor-card" : "actor-card"} id={actor.id} onClick={(event) => handleClick(event)}>
                 <div className="card-content">
                     <div className="actor-div">
                         <img className="actor-image"

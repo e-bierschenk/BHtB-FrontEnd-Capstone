@@ -9,6 +9,11 @@
     opacity: 85%;
 }
 
+.actor-card-next {
+    background-color: var(--main-color);
+}
+
+
 .card-content {
     padding: 1em;
     display: flex;
