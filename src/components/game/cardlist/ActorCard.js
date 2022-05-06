@@ -6,7 +6,7 @@ import React from "react";
 export const ActorCard = ({ actor, handleClick, nextStep }) => {
     return (
         <>
-            <div className={nextStep === actor.name ? "actor-card-next actor-card" : "actor-card"} id={actor.id} onClick={(event) => handleClick(event)}>
+            <div className={nextStep === actor.name || actor.name === "Kevin Bacon" ? "actor-card-next actor-card" : "actor-card"} id={actor.id} onClick={(event) => handleClick(event)}>
                 <div className="card-content">
                     <div className="actor-div">
                         <img className="actor-image"

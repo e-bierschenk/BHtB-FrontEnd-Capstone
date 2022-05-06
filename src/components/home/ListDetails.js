@@ -13,7 +13,7 @@ export const ListDetails = ({ game, setShowDetails }) => {
         <>
             <h2>Game Details</h2>
             <p>You connected {breadArray[0]} to Kevin Bacon in {game.score} steps.</p>
-            <p>It took you {game.timeElapsed / 100}s</p>
+            <p>It took you {(game.timeElapsed / 1000).toFixed(2)}s</p>
             <h3>Path:</h3>
             <p>{breadArray.map((element, index) => {
                 let conjunction = ""

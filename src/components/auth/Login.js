@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import { Link } from "react-router-dom";
 import { useNavigate} from "react-router-dom"
 import { netlifyConfig } from "../../helpers/apiKeys";
@@ -29,11 +29,15 @@ export const Login = ({ setAuthUser }) => {
             })
     }
 
+    useEffect(() => {
+        document.body.className = "mainTheme"
+    }, [])
+
     return (
         <main className="container--login">
             <dialog className="dialog dialog--auth" ref={existDialog}>
                 <div>User does not exist</div>
-                <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
+                <button className="btn" onClick={e => existDialog.current.close()}>Close</button>
             </dialog>
 
             <section>
@@ -49,7 +53,7 @@ export const Login = ({ setAuthUser }) => {
                             required autoFocus />
                     </fieldset>
                     <fieldset>
-                        <button type="submit">
+                        <button className="btn btn-login" type="submit">
                             Sign in
                         </button>
                     </fieldset>

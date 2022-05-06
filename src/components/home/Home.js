@@ -63,12 +63,11 @@ export const Home = () => {
 const GamesList = ({myGames, handleGameClick}) => {
     return (
         <ul className="games-list">
-            {myGames.map(game => <>
-                <li className="list-item"
-                    key={game.id}
-                    onClick={() => handleGameClick(game)}>{game.breadcrumb.split(";")[0]} to Kevin Bacon: {game.score} Connections; {(game.timeElapsed / 100)}s
+            {myGames.map(game => 
+                <li key={game.id}
+                className="list-item"
+                onClick={() => handleGameClick(game)}>{game.breadcrumb.split(";")[0]} to Kevin Bacon: {game.score} Connections; {(game.timeElapsed / 1000).toFixed(2)}s
                 </li>
-            </>
             )}
         </ul>
     )

@@ -49,10 +49,10 @@ export const bfs = (startName, endName = "Kevin Bacon") => {
     const graph = new Graph()
     const path = []
 
-    return fetch(`${netlifyConfig.baconUrl}/movies`)
+    // return fetch(`${netlifyConfig.baconUrl}/movies`)
+    return fetch(`http://localhost:8088/movies`)
         .then(response => response.json())
         .then(data => {
-            console.log(startName, endName)
             const movies = data
 
             for (const movie of movies) {
@@ -87,7 +87,7 @@ export const bfs = (startName, endName = "Kevin Bacon") => {
             while (queue.length > 0) {         //while the queue is not empty, search
                 const currentNode = queue.shift()  //remove the first element from the queue array
                 if (currentNode === endNode) {
-                    console.log("Found!", currentNode)
+                    console.log("Found!")
                     break
                 }
                 const edges = currentNode.edges
@@ -106,6 +106,7 @@ export const bfs = (startName, endName = "Kevin Bacon") => {
                 path.push(next)
                 next = next.parent
             }
+            console.log(path)
             return (path.reverse())
         })
 }

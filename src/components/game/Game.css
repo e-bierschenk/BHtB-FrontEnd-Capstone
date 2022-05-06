@@ -44,6 +44,16 @@
     opacity: 100%;
 }
 
+.btn-disabled {
+    cursor:default;
+    opacity: 75%;
+}
+
+.btn-disabled:hover {
+    cursor:default;
+    opacity: 75%;
+}
+
 .controls {
     background-color: var(--main-color);
     color: #FFFFFF;

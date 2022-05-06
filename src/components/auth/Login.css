@@ -1,4 +1,4 @@
-.h1, h1 {
+ .h1, h1 {
     font-size: 2.5rem;
 }
 
@@ -10,19 +10,30 @@ fieldset {
 }
 
 .form--login {
+    color: #FFFFFF;
     display: inline-block;
     margin: 0 auto;
     text-align: left;
 }
 
+.form--login h1 {
+    font-family: var(--logo-font);
+}
+
 .form--login > fieldset > input[type="email"],
 .form--login > fieldset > input[type="password"] {
     width: 25em;
+    border: none;
 }
 
 .label--login {
     width: 8rem;
     display: inline-block;
+}
+
+.btn-login {
+    color: var(--main-color);
+    background-color: #FFFFFF;
 }
 
 .form-control {
@@ -33,18 +44,22 @@ fieldset {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
+    color: var(--main-color);
+    background-color: #FFFFFF;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border: none
 }
+
+.form-control::placeholder {
+    color: var(--main-color)
+}
+
+
 
 .container--login {
     text-align: center;
 }
+
 
 .form--login {
     background-position-x: right;
@@ -52,8 +67,7 @@ fieldset {
     z-index: 1;
     min-height: 25rem;
     min-width: 45rem;
-    background-color: hsla(0,0%,100%,0.40);
-    background-blend-mode: overlay;
+    background-color: var(--main-color);
     background-repeat: no-repeat;
 }
 
@@ -67,3 +81,10 @@ fieldset {
     min-height: 5rem;
 }
 
+main a {
+    color: var(--accent-color)
+}
+
+:focus {
+    outline-color: var(--main-color);
+}
