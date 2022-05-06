@@ -25,12 +25,9 @@ export const Game = () => {
     const [detailMovie, setDetailMovie] = useState({}) //state for the movie detail
     const [nextStep, setNextStep] = useState("")
     const [buttonDisabled, setButtonDisabled] = useState(false)
+    const [startTime] = useState(new Date())
 
     const navigate = useNavigate()
-
-    const startTime = new Date().getTime()
-
-
 
     //functions to get a movie's actors or an actor's movies, and set state, get coins as well
     const getMovie = (movieId) => getCastByMovieId(movieId).then(setMovie)
@@ -60,16 +57,18 @@ export const Game = () => {
             if (event.currentTarget.id === "nm0000102") {
                 //trigger end of game steps
                 console.log("CONGRATS YOU LED KEVIN BACON HOME")
+                const endTime = new Date()
 
                 const gameObj = {
                     userId: JSON.parse(sessionStorage.getItem("bacon_user")).id,
                     isWin: true,
                     score: linkCount + 1,
-                    timeElapsed: new Date() - startTime,
+                    timeElapsed: endTime - startTime,
                     breadcrumb: trailToDbFormat(trail)
                 }
                 addGame(gameObj)
-                navigate("/")
+                    .then(() => navigate("/"))
+                
 
             } else {
                 getActor(event.currentTarget.id)
@@ -123,9 +122,8 @@ export const Game = () => {
         updateCoinsByUserId(coinObj)
             .then(res => setCoins(res.baconbits))
         const start = actorMovie === 'actor' ? actor.name : movie
-        console.log(start)
-        bfs(start)
-            .then(optimalPath => setNextStep(optimalPath[1].value.split(" (")[0]))
+        // bfs(start)
+        //     .then(optimalPath => setNextStep(optimalPath[1].value.split(" (")[0]))
     }
 
     const handleInputChange = (event) => {
@@ -194,8 +192,8 @@ export const Game = () => {
                 <div className="controls">
                     <div className="controls-left">
                         {!buttonDisabled ? <button className="btn btn-bacon"
-                            onClick={handleCoinClick}>USE BACONBIT: {coins}</button> : <button className="btn btn-bacon"
-                            onClick={handleCoinClick} disabled>HINT USED</button>}
+                            onClick={handleCoinClick}>USE BACONBIT: {coins}</button> : <button className="btn btn-disabled"
+                            onClick={handleCoinClick} disabled={true}>HINT USED</button>}
                         
                         <CardSearch searchInputValue={searchInputValue} handleInputChange={handleInputChange} autoFocus />
                     </div>

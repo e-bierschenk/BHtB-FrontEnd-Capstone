@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import "./BreadCrumb.css"
 
 export const BreadCrumb = ({ actor, initialActor, movie, actorMovie, trail, setTrail, handleClick, normalClick }) => {
@@ -19,7 +19,7 @@ export const BreadCrumb = ({ actor, initialActor, movie, actorMovie, trail, setT
                 {trail.map((crumb, index) => {
                     //the hell of ternary statements below formats the output such that we don't display 
                     //so and so was in ___movie on the first time through
-                    return <>
+                    return <React.Fragment key={`bread--${index}`}>
                         {index === 0 ?
                             ""
                             :
@@ -29,12 +29,11 @@ export const BreadCrumb = ({ actor, initialActor, movie, actorMovie, trail, setT
                                 alt="blue equilateral triangle" />
                             </div>
                         }
-                        <Crumb key={`bread--${index}`}
+                        <Crumb 
                             crumb={crumb}
                             index={index}
                             handleClick={handleClick} />
-                    </>
-
+                    </React.Fragment>
                 })}
             </div>
         </>
